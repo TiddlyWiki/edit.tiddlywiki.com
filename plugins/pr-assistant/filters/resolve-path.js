@@ -14,19 +14,31 @@ exports.resolvepath = (source, operator, options) => {
 		basePath = operator.operand || "";
 
 	source((tiddler, relPath) => {
-		try{
-			// Collapse multiple slashes
+		try {
+			// Normalize relative path by collapsing multiple slashes
 			relPath = relPath.replace(/\/+/g, "/");
+
+			// Use URL to resolve safely in both browser and Node
 			const resolvedUrl = new URL(relPath, new URL(basePath + "/", fakeRoot));
+
 			// Strip the fake root prefix to get repo-rooted path
 			let path = resolvedUrl.pathname.replace(/^\/repo-root\//, "");
+
 			// Clamp to repo root
-			if(path.startsWith("/")){
+			if(path.startsWith("/")) {
 				path = path.slice(1);
 			}
+
+			// Decode percent-encoded characters (e.g. %20 -> space)
+			try {
+				path = decodeURIComponent(path);
+			} catch(e) {
+				// if decoding fails, keep the encoded form
+			}
+
 			results.push(path);
-		}catch(e){
-			// fallback: if invalid URL, just return the relative path
+		} catch(e) {
+			// fallback: if invalid URL, just return the normalized relative path
 			results.push(relPath);
 		}
 	});

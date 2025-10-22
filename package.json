@@ -11,9 +11,6 @@
   },
   "author": "",
   "license": "BSD",
-  "dependencies": {
-    "tiddlywiki": "^5.3.8"
-  },
   "devDependencies": {
     "@octokit/core": "^5.1.0",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -22,6 +19,7 @@
     "nodemon": "^3.0.1",
     "npx": "^10.2.2",
     "octokit-plugin-create-pull-request": "^5.1.1",
-    "rollup": "^4.9.6"
+    "rollup": "^4.9.6",
+    "tiddlywiki": "github:TiddlyWiki/TiddlyWiki5#tiddlywiki-com"
   }
 }

@@ -2,9 +2,6 @@
 title: $:/plugins/sq/github-pr-assistant/filters/sanitize-filename.js
 type: application/javascript
 module-type: filteroperator
-
-Filter operator to check whether a password exists in local storage
-
 \*/
 (function(){
 

@@ -112,8 +112,9 @@ async function loadPR(pr_number) {
 	let octokit;
 	try {
 		await loadOctokit();
-		const TOKEN = $tw.utils.getPassword("github-docs-pr");
-		if(!TOKEN || !TOKEN.length) {
+		const token = sessionStorage.getItem("gh_access_token");
+
+		if(!token || !token.length) {
 			alert("Please set the github personal access token");
 			return;
 		}

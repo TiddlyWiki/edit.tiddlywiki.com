@@ -115,7 +115,7 @@ async function loadPR(pr_number) {
 		const token = sessionStorage.getItem("gh_access_token");
 
 		if(!token || !token.length) {
-			alert("Please set the github personal access token");
+			alert("Please sign in and try again");
 			return;
 		}
 		octokit = new $tw.Octokit({

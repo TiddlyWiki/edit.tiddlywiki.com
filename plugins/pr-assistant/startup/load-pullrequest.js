@@ -119,7 +119,7 @@ async function loadPR(pr_number) {
 			return;
 		}
 		octokit = new $tw.Octokit({
-			auth: TOKEN
+			auth: token
 		});
 
 		const pr = await getPR(pr_number);
